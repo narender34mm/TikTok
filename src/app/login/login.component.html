@@ -1,0 +1,24 @@
+<form (ngSubmit)="login()" class="f1">
+  <div class="form-group">
+    <h2>Product Login</h2>
+  </div>
+  <div class="form-group">
+    <input
+      type="email"
+      name="form-control"
+      placeholder="Enter username"
+      [(ngModel)]="email"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      name="form-control"
+      placeholder="Enter password"
+      [(ngModel)]="password"
+    />
+  </div>
+  <div class="form-group">
+    <button>Login</button>
+  </div>
+</form>

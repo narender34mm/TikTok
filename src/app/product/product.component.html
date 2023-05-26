@@ -1,0 +1,17 @@
+<div class="center">
+  <div>
+    <button
+      type="button"
+      class="add-product-button"
+      [routerLink]="['/manageProduct']"
+    >
+      Add Product
+    </button>
+  </div>
+  <div>
+    <app-product-list
+      [productList]="productList"
+      class="product-list-container"
+    ></app-product-list>
+  </div>
+</div>

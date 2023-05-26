@@ -1,0 +1,169 @@
+<h2>{{ isEditMode ? "Edit Product" : "Add Product" }}</h2>
+<form
+  *ngIf="productForm"
+  [formGroup]="productForm"
+  (ngSubmit)="onSubmit()"
+  class="forml"
+>
+  <label class="lab" for="name">Name: </label>
+  <input
+    class="in"
+    id="name"
+    type="text"
+    formControlName="name"
+    placeholder="Enter product name"
+    required
+  />
+  <br />
+  <b
+    class="notify"
+    *ngIf="
+      this.productForm.get('name')?.hasError('required') &&
+      productForm.get('name')?.dirty
+    "
+  >
+    Name is required
+  </b>
+  <b class="notify" *ngIf="this.productForm.get('name')?.hasError('maxlength')">
+    Maximum 12 character
+  </b>
+  <b class="notify" *ngIf="this.productForm.get('name')?.hasError('minlength')">
+    Minimum 3 character
+  </b>
+  <label class="lab" for="description">Description: </label>
+  <textarea
+    class="in"
+    id="description"
+    type="text"
+    formControlName="description"
+    placeholder="Write description"
+    required
+  ></textarea>
+  <br />
+  <b
+    class="notify"
+    *ngIf="
+      this.productForm.get('description')?.hasError('required') &&
+      productForm.get('description')?.dirty
+    "
+  >
+    Description is required
+  </b>
+
+  <label class="lab" for="quantity">Number of qunatites: </label>
+  <input
+    class="in"
+    id="quantity"
+    type="number"
+    formControlName="quantity"
+    placeholder="Enter qunatites"
+    required
+  />
+  <br />
+  <b
+    class="notify"
+    *ngIf="
+      this.productForm.get('quantity')?.hasError('required') &&
+      productForm.get('quantity')?.dirty
+    "
+  >
+    Quantity is required
+  </b>
+
+  <label class="lab" for="price">Price: </label>
+  <input
+    class="in"
+    id="price"
+    type="number"
+    formControlName="price"
+    placeholder="Enter price"
+    required
+  />
+  <br />
+  <b
+    class="notify"
+    *ngIf="
+      this.productForm.get('price')?.hasError('required') &&
+      productForm.get('price')?.dirty
+    "
+  >
+    Price is required
+  </b>
+
+  <label class="lab" for="date">Expiry Date: </label>
+  <input
+    class="in"
+    id="date"
+    type="date"
+    formControlName="date"
+    required
+  /><br />
+  <b
+    class="notify"
+    *ngIf="
+      this.productForm.get('date')?.hasError('required') &&
+      productForm.get('date')?.dirty
+    "
+  >
+    Date is required
+  </b>
+  <b class="notify" *ngIf="productForm.get('date')?.hasError('invalidDate')"
+    >Selected date must not be in the past.</b
+  >
+
+  <label class="lab" for="states">Manufacturer State: </label>
+  <select
+    id="states"
+    name="states"
+    formControlName="states"
+    class="in"
+    required
+  >
+    <option value="Karnataka">Karnataka</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="California">California</option>
+    <option value="New York">New York</option>
+    <option value="Texas">Texas</option>
+    <option value="Florida">Florida</option>
+    <option value="Illinois">Illinois</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Washington">Washington</option>
+    <option value="Massachusetts">Massachusetts</option>
+    <option value="Ohio">Ohio</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+  </select>
+  <br />
+  <b
+    class="notify"
+    *ngIf="
+      this.productForm.get('states')?.hasError('required') &&
+      productForm.get('states')?.dirty
+    "
+  >
+    State is required
+  </b>
+
+  <label class="lab">In Stock ? </label>
+  <br />
+  <b
+    class="notify"
+    *ngIf="
+      this.productForm.get('inStock')?.hasError('required') &&
+      productForm.get('inStock')?.dirty
+    "
+  >
+    Value is required
+  </b>
+
+  <input type="radio" [value]="true" formControlName="inStock" required />
+    <label>Yes</label>
+  <input type="radio" [value]="false" formControlName="inStock" required />
+    <label>No</label><br />
+
+  <button [disabled]="productForm.invalid" class="btn btn-success" >
+    {{ isEditMode ? "Update Product" : "Add Product" }}
+  </button>
+  <button type="button" id="warn" [routerLink]="['/product']">Cancel</button>
+</form>

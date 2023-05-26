@@ -25,7 +25,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -63,7 +64,8 @@
               "browserTarget": "tikTok:build:production"
             },
             "development": {
-              "browserTarget": "tikTok:build:development"
+              "browserTarget": "tikTok:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -94,5 +96,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1dcd471d-ad61-42ce-b8f6-685e5fb07bc7"
   }
 }

@@ -1,0 +1,27 @@
+<table class="table1">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Date</th>
+    <th>Manufacturer State</th>
+    <th>Available</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let product of productList">
+    <td>{{ product.id }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.description }}</td>
+    <td>{{ product.quantity }}</td>
+    <td>{{ product.price | currency:'INR'}}</td>
+    <td>{{ product.date | date:'shortDate'}}</td>
+    <td>{{ product.states }}</td>
+    <td>{{ product.inStock?"Yes":"No" }}</td>
+    <td>
+      <button type="button" class="btn1"  [routerLink]="['/manageProduct']" [queryParams]="{ id: product.id }">Edit</button>
+      <button type="button" class="btn2" (click)="delete(product.id)">Delete</button>
+    </td>
+  </tr>
+</table>
